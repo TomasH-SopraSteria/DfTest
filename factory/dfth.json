@@ -1,0 +1,9 @@
+{
+	"name": "dfth",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "08b6844a-bfb1-434a-a9b9-ed790352dfb1",
+		"tenantId": "85173d93-99ef-4dff-9b45-495719659133"
+	}
+}
