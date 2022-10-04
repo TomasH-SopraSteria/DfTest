@@ -1,5 +1,5 @@
 {
-	"name": "AWCustomer",
+	"name": "LimeCustomer",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase1",
