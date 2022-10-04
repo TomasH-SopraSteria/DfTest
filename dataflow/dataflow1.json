@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "AWCustomer",
+						"referenceName": "LimeCustomer",
 						"type": "DatasetReference"
 					},
 					"name": "SourceCustomer"
@@ -22,7 +22,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "DWDimCustomer",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"

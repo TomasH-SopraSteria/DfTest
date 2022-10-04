@@ -1,5 +1,5 @@
 {
-	"name": "StagingDBCustomerAddress",
+	"name": "StagingProductCat",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabaseStaging",
@@ -12,17 +12,17 @@
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "CustomerID",
+				"name": "ProductCategoryID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "AddressID",
+				"name": "ParentProductCategoryID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "AddressType",
+				"name": "Name",
 				"type": "nvarchar"
 			},
 			{
@@ -38,8 +38,7 @@
 		],
 		"typeProperties": {
 			"schema": "Lime",
-			"table": "CustomerAddress"
+			"table": "ProductCategory"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }

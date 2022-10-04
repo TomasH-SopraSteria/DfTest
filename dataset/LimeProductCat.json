@@ -1,28 +1,25 @@
 {
-	"name": "StagingDBCustomerAddress",
+	"name": "LimeProductCat",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabaseStaging",
+			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
-		},
-		"folder": {
-			"name": "Staging"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
 			{
-				"name": "CustomerID",
+				"name": "ProductCategoryID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "AddressID",
+				"name": "ParentProductCategoryID",
 				"type": "int",
 				"precision": 10
 			},
 			{
-				"name": "AddressType",
+				"name": "Name",
 				"type": "nvarchar"
 			},
 			{
@@ -37,9 +34,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "Lime",
-			"table": "CustomerAddress"
+			"schema": "SalesLT",
+			"table": "ProductCategory"
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+	}
 }

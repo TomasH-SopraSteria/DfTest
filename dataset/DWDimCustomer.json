@@ -1,9 +1,12 @@
 {
-	"name": "AzureSqlTable1",
+	"name": "DWDimCustomer",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase2",
 			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",

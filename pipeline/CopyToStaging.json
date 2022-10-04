@@ -226,7 +226,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AWCustomer",
+						"referenceName": "LimeCustomer",
 						"type": "DatasetReference"
 					}
 				],
@@ -341,7 +341,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AWCustomerAddress",
+						"referenceName": "LimeCUstomerAddress",
 						"type": "DatasetReference"
 					}
 				],
@@ -354,6 +354,215 @@
 			},
 			{
 				"name": "CopyProduct",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true,
+							"keys": [
+								"CustomerID"
+							]
+						},
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "ProductID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ProductID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ProductNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Color",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Color",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "StandardCost",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "StandardCost",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ListPrice",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "ListPrice",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "Size",
+									"type": "String"
+								},
+								"sink": {
+									"name": "Size",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Weight",
+									"type": "Decimal"
+								},
+								"sink": {
+									"name": "Weight",
+									"type": "Decimal"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductCategoryID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ProductCategoryID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "ProductModelID",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "ProductModelID",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "SellStartDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SellStartDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "SellEndDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "SellEndDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "DiscontinuedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "DiscontinuedDate",
+									"type": "DateTime"
+								}
+							},
+							{
+								"source": {
+									"name": "ThumbNailPhoto",
+									"type": "Byte[]"
+								},
+								"sink": {
+									"name": "ThumbNailPhoto",
+									"type": "Byte[]"
+								}
+							},
+							{
+								"source": {
+									"name": "ThumbnailPhotoFileName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ThumbnailPhotoFileName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rowguid",
+									"type": "Guid"
+								},
+								"sink": {
+									"name": "rowguid",
+									"type": "Guid"
+								}
+							},
+							{
+								"source": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								},
+								"sink": {
+									"name": "ModifiedDate",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
+				},
+				"outputs": [
+					{
+						"referenceName": "StagingProduct",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "CopyProductCat",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -388,114 +597,6 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "ProductID",
-									"type": "Int32",
-									"physicalType": "int"
-								},
-								"sink": {
-									"name": "ProductID",
-									"type": "Int32",
-									"physicalType": "int"
-								}
-							},
-							{
-								"source": {
-									"name": "Name",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "Name",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "ProductNumber",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "ProductNumber",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Color",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "Color",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "StandardCost",
-									"type": "Decimal",
-									"physicalType": "money",
-									"scale": 4,
-									"precision": 19
-								},
-								"sink": {
-									"name": "StandardCost",
-									"type": "Decimal",
-									"physicalType": "money",
-									"scale": 4,
-									"precision": 19
-								}
-							},
-							{
-								"source": {
-									"name": "ListPrice",
-									"type": "Decimal",
-									"physicalType": "money",
-									"scale": 4,
-									"precision": 19
-								},
-								"sink": {
-									"name": "ListPrice",
-									"type": "Decimal",
-									"physicalType": "money",
-									"scale": 4,
-									"precision": 19
-								}
-							},
-							{
-								"source": {
-									"name": "Size",
-									"type": "String",
-									"physicalType": "nvarchar"
-								},
-								"sink": {
-									"name": "Size",
-									"type": "String",
-									"physicalType": "nvarchar"
-								}
-							},
-							{
-								"source": {
-									"name": "Weight",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 8
-								},
-								"sink": {
-									"name": "Weight",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 8
-								}
-							},
-							{
-								"source": {
 									"name": "ProductCategoryID",
 									"type": "Int32",
 									"physicalType": "int"
@@ -508,72 +609,24 @@
 							},
 							{
 								"source": {
-									"name": "ProductModelID",
+									"name": "ParentProductCategoryID",
 									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "ProductModelID",
+									"name": "ParentProductCategoryID",
 									"type": "Int32",
 									"physicalType": "int"
 								}
 							},
 							{
 								"source": {
-									"name": "SellStartDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "SellStartDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "SellEndDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "SellEndDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "DiscontinuedDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								},
-								"sink": {
-									"name": "DiscontinuedDate",
-									"type": "DateTime",
-									"physicalType": "datetime"
-								}
-							},
-							{
-								"source": {
-									"name": "ThumbNailPhoto",
-									"type": "Byte[]",
-									"physicalType": "varbinary"
-								},
-								"sink": {
-									"name": "ThumbNailPhoto",
-									"type": "Byte[]",
-									"physicalType": "varbinary"
-								}
-							},
-							{
-								"source": {
-									"name": "ThumbnailPhotoFileName",
+									"name": "Name",
 									"type": "String",
 									"physicalType": "nvarchar"
 								},
 								"sink": {
-									"name": "ThumbnailPhotoFileName",
+									"name": "Name",
 									"type": "String",
 									"physicalType": "nvarchar"
 								}
@@ -612,13 +665,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureSqlTable2",
+						"referenceName": "LimeProductCat",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "StagingProduct",
+						"referenceName": "StagingProductCat",
 						"type": "DatasetReference"
 					}
 				]
